@@ -1,8 +1,9 @@
 :root{--bg:#1c1c20;--bg2:#222227;--card:#27272c;--hi:#34343b;--line:#3a3a42;--bd:#4e4e58;--sh:#131316;--tx:#e6e6ea;--mut:#9696a0;--ac:#c4c4cc;--r:24px}
 [data-theme=light]{--bg:#ebebee;--bg2:#e2e2e6;--card:#f3f3f5;--hi:#dcdce1;--line:#d0d0d6;--bd:#b2b2bb;--sh:#c8c8ce;--tx:#2b2b31;--mut:#74747e;--ac:#4b4b54}
 *{box-sizing:border-box}
-html{background:var(--bg);-webkit-text-size-adjust:100%}
-body{margin:0;background:linear-gradient(160deg,var(--bg),var(--bg2));background-attachment:fixed;color:var(--tx);font:16px/1.5 Fredoka,ui-rounded,"Nunito",system-ui,sans-serif}
+html{background:var(--bg);-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html,body{touch-action:manipulation;overscroll-behavior:none}
+body{margin:0;background:linear-gradient(160deg,var(--bg),var(--bg2));background-attachment:fixed;color:var(--tx);font:16px/1.5 Fredoka,ui-rounded,"Nunito",system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
 #app{display:flex;min-height:100vh}
 aside{width:230px;background:var(--bg2);border-right:2px solid var(--bd);padding:20px 14px;position:fixed;top:0;bottom:0;left:0;display:flex;flex-direction:column;gap:6px;z-index:5}
 .logo{font-weight:700;font-size:30px;padding:0 12px 18px;letter-spacing:.04em}
@@ -55,11 +56,18 @@ h1,h2,h3,p,.badge,.btn{overflow-wrap:anywhere}.btn{max-width:100%;white-space:no
 .row>input[type=number],.row>input[name=unit]{max-width:none!important}
 .btn{justify-content:center;text-align:center;gap:0}
 .row>a.btn{flex:1 1 110px}
-input,select,textarea{padding:8px 12px;font-size:15px;border-radius:16px;min-width:0;max-width:100%}
+
+/* Inputs: 16px minimum so iPhones never auto-zoom when a field is focused */
+input,select,textarea{padding:8px 12px;font-size:16px!important;border-radius:16px;min-width:0;max-width:100%}
 label{margin-bottom:10px}
-input[type=date]{-webkit-appearance:none;appearance:none;height:40px;font-size:14px;padding:6px 10px;text-align:left}
+input[type=date]{-webkit-appearance:none;appearance:none;height:42px;font-size:16px!important;padding:6px 10px;text-align:left}
 input[type=date]::-webkit-date-and-time-value{text-align:left;min-height:1.2em}
 form .row>label{flex:1 1 130px;min-width:0}
+
+/* Intro screen: no bottom blur, keep button clear of the home indicator */
+body.ob-mode::after{display:none!important}
+.ob{padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))}
+
 @media(max-width:760px){
 aside{top:auto;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));width:auto;height:auto;flex-direction:row;padding:6px;justify-content:space-around;border:2px solid var(--bd);border-radius:999px;background:var(--bg2);box-shadow:4px 4px 0 var(--sh)}
 .logo{display:none}aside{border-radius:28px}aside a{flex-direction:column;gap:2px;font-size:11px;line-height:1.2;padding:8px 4px;border-radius:20px;flex:1;min-width:0;text-align:center}aside a svg{width:22px;height:22px;display:block;stroke:currentColor}aside a span{display:block;color:inherit}aside a{color:var(--tx)}
@@ -67,4 +75,5 @@ aside{top:auto;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-botto
 h1{font-size:27px}
 aside{padding:5px 4px;gap:2px}aside a{padding:7px 2px;font-size:10.5px;overflow:hidden;border:0}aside a:hover{transform:none}aside a span{white-space:nowrap;max-width:100%;overflow:hidden}aside a svg{width:21px;height:21px}
 body::after{content:"";position:fixed;left:0;right:0;bottom:0;height:calc(92px + env(safe-area-inset-bottom,0px));z-index:4;pointer-events:none;background:linear-gradient(to top,var(--bg) 40%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);-webkit-mask-image:linear-gradient(to top,#000 60%,transparent);mask-image:linear-gradient(to top,#000 60%,transparent)}
+body.ob-mode::after{display:none!important}
 }

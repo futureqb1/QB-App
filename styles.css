@@ -3,6 +3,9 @@
 *{box-sizing:border-box}
 html{background:var(--bg);-webkit-text-size-adjust:100%;text-size-adjust:100%}
 html,body{touch-action:manipulation;overscroll-behavior:none}
+/* Hide every scrollbar (page, overlays, tables) but keep scrolling working */
+*{scrollbar-width:none;-ms-overflow-style:none}
+*::-webkit-scrollbar{display:none;width:0;height:0;background:transparent}
 body{margin:0;background:linear-gradient(160deg,var(--bg),var(--bg2));background-attachment:fixed;color:var(--tx);font:16px/1.5 Fredoka,ui-rounded,"Nunito",system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
 #app{display:flex;min-height:100vh}
 aside{width:230px;background:var(--bg2);border-right:2px solid var(--bd);padding:20px 14px;position:fixed;top:0;bottom:0;left:0;display:flex;flex-direction:column;gap:6px;z-index:5}

@@ -1,9 +1,10 @@
 :root{--bg:#1c1c20;--bg2:#222227;--card:#27272c;--hi:#34343b;--line:#3a3a42;--bd:#4e4e58;--sh:#131316;--tx:#e6e6ea;--mut:#9696a0;--ac:#c4c4cc;--r:24px}
 [data-theme=light]{--bg:#ebebee;--bg2:#e2e2e6;--card:#f3f3f5;--hi:#dcdce1;--line:#d0d0d6;--bd:#b2b2bb;--sh:#c8c8ce;--tx:#2b2b31;--mut:#74747e;--ac:#4b4b54}
 *{box-sizing:border-box}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
 body{margin:0;background:linear-gradient(160deg,var(--bg),var(--bg2));background-attachment:fixed;color:var(--tx);font:16px/1.5 Fredoka,ui-rounded,"Nunito",system-ui,sans-serif}
 #app{display:flex;min-height:100vh}
-aside{width:230px;background:var(--bg2);border-right:2px solid var(--bd);padding:20px 14px;position:fixed;inset:0 auto 0 0;display:flex;flex-direction:column;gap:6px;z-index:5}
+aside{width:230px;background:var(--bg2);border-right:2px solid var(--bd);padding:20px 14px;position:fixed;top:0;bottom:0;left:0;display:flex;flex-direction:column;gap:6px;z-index:5}
 .logo{font-weight:700;font-size:30px;padding:0 12px 18px;letter-spacing:.04em}
 .logo b{display:inline-block;background:var(--ac);color:var(--bg);border-radius:50%;width:38px;height:38px;line-height:38px;text-align:center;margin-left:4px}
 aside a{display:flex;gap:10px;align-items:center;padding:11px 16px;border-radius:999px;color:var(--tx);text-decoration:none;font-weight:500;border:2px solid transparent;transition:transform .2s cubic-bezier(.3,1.6,.5,1),background .2s}
@@ -40,7 +41,7 @@ label input,label select,label textarea{margin-top:5px}
 .note{border:2px dashed var(--bd);padding:12px 16px;border-radius:20px;font-size:14px}
 table{width:100%;border-collapse:collapse;font-size:15px}th,td{text-align:left;padding:8px 6px;border-bottom:2px dotted var(--line)}th{color:var(--mut);font-weight:500}
 .empty{text-align:center;color:var(--mut);padding:28px 12px;border:2px dashed var(--line);border-radius:var(--r)}
-.ov{position:fixed;inset:0;background:var(--bg);z-index:50;overflow:auto;padding:24px;animation:pop .3s}
+.ov{position:fixed;top:0;right:0;bottom:0;left:0;background:var(--bg);z-index:50;overflow:auto;padding:24px;animation:pop .3s}
 .ov[hidden]{display:none}.ov>.in{max-width:680px;margin:0 auto}
 .timer{font-size:56px;font-weight:700;font-variant-numeric:tabular-nums}
 ul.c{padding-left:20px;margin:6px 0}ul.c li{margin:4px 0}
@@ -49,8 +50,8 @@ ul.c{padding-left:20px;margin:6px 0}ul.c li{margin:4px 0}
 #toast.on{opacity:1;transform:translateX(-50%) scale(1)}
 canvas{max-height:260px}
 @media(max-width:760px){
-aside{inset:auto 10px 10px 10px;width:auto;flex-direction:row;padding:6px;justify-content:space-around;border:2px solid var(--bd);border-radius:999px;background:var(--bg2);box-shadow:4px 4px 0 var(--sh)}
-.logo{display:none}aside{border-radius:28px}aside a{flex-direction:column;gap:2px;font-size:11px;line-height:1.2;padding:8px 4px;border-radius:20px;flex:1;min-width:0;text-align:center}aside a svg{width:22px;height:22px}
+aside{top:auto;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));width:auto;height:auto;flex-direction:row;padding:6px;justify-content:space-around;border:2px solid var(--bd);border-radius:999px;background:var(--bg2);box-shadow:4px 4px 0 var(--sh)}
+.logo{display:none}aside{border-radius:28px}aside a{flex-direction:column;gap:2px;font-size:11px;line-height:1.2;padding:8px 4px;border-radius:20px;flex:1;min-width:0;text-align:center}aside a svg{width:22px;height:22px;display:block;stroke:currentColor}aside a span{display:block;color:inherit}aside a{color:var(--tx)}
 .pg{margin:0;width:100%;padding:20px 14px 110px}
 h1{font-size:27px}
 }

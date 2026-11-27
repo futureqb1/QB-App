@@ -50,7 +50,7 @@ ul.c{padding-left:20px;margin:6px 0}ul.c li{margin:4px 0}
 canvas{max-height:260px}
 @media(max-width:760px){
 aside{inset:auto 10px 10px 10px;width:auto;flex-direction:row;padding:6px;justify-content:space-around;border:2px solid var(--bd);border-radius:999px;background:var(--bg2);box-shadow:4px 4px 0 var(--sh)}
-.logo,aside a span{display:none}aside a{padding:11px 14px}
+.logo{display:none}aside{border-radius:28px}aside a{flex-direction:column;gap:2px;font-size:11px;line-height:1.2;padding:8px 4px;border-radius:20px;flex:1;min-width:0;text-align:center}aside a svg{width:22px;height:22px}
 .pg{margin:0;width:100%;padding:20px 14px 110px}
 h1{font-size:27px}
 }

@@ -32,6 +32,8 @@ function onboard(){return`<div class="ob"><div class="logo">Q<b>B</b></div><h1>B
 
 /* ---------- Views ---------- */
 const NAV=[["dash","Dashboard","layout-dashboard"],["train","Training","dumbbell"],["drills","Drills","book-open"],["throw","Throwing","target"],["prog","Progress","trending-up"],["me","Profile","user"]];
+const ICO={dash:'<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>',train:'<path d="M6.5 6.5v11M17.5 6.5v11M3 9v6M21 9v6M6.5 12h11"/>',drills:'<path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/>',throw:'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',prog:'<path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/>',me:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>'};
+const IC=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICO[k]}</svg>`;
 const streak=()=>{const s=new Set(S.history.map(x=>x.date));let n=0,i=s.has(dl(0))?0:1;while(s.has(dl(i))){n++;i++}return n};
 const lastAcc=()=>{const t=S.throws.slice().sort((a,b)=>a.date<b.date?-1:1).pop();return t?pct(t.hits,t.attempts)+"%":"—"};
 const empty=m=>`<div class="empty">${m}</div>`;
@@ -100,7 +102,7 @@ function mk(id,type,labels,data,label){const c=document.getElementById(id);if(!c
 function render(){charts.forEach(c=>c.destroy());charts=[];post=null;document.documentElement.dataset.theme=S?S.theme:"dark";
 if(!S){$("#app").innerHTML=onboard();icons();return}
 const r=location.hash.slice(1)||"dash",v={dash:vDash,train:vTrain,drills:vDrills,throw:vThrow,prog:vProg,me:vMe}[r]||vDash;
-$("#app").innerHTML=`<aside><div class="logo">Q<b>B</b></div>${NAV.map(n=>`<a href="#${n[0]}" class="${n[0]==r?"on":""}"><i data-lucide="${n[2]}"></i><span>${n[1]}</span></a>`).join("")}</aside><main class="pg">${v()}</main>`;
+$("#app").innerHTML=`<aside><div class="logo">Q<b>B</b></div>${NAV.map(n=>`<a href="#${n[0]}" class="${n[0]==r?"on":""}">${IC(n[0])}<span>${n[1]}</span></a>`).join("")}</aside><main class="pg">${v()}</main>`;
 icons();if(post)post();scrollTo(0,0)}
 addEventListener("hashchange",render);
 
